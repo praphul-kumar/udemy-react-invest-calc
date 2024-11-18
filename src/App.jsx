@@ -2,24 +2,29 @@ import { useState } from "react";
 import Header from "./components/Header";
 import UserInputs from "./components/UserInputs";
 import Result from "./components/Result";
-import { calculateInvestmentResults } from "./util/investment";
 
 function App() {
-  const [investmentResult, setInvestmentResult] = useState([]);
+  const [userInput, setUserInput] = useState({
+    initialInvestment: 15000,
+    annualInvestment: 1200,
+    expectedReturn: 6,
+    duration: 10
+  });
 
-  function handleInputChange(inputs) {
-    console.log("App: ");
-    console.log(inputs);
-
-    const results = calculateInvestmentResults(inputs);
-    setInvestmentResult(results);
+  function handleChange(identifier, newValue) {
+    setUserInput(prevInput => {
+      return {
+        ...prevInput,
+        [identifier] : +newValue
+      }
+    });
   }
 
   return (
     <>
       <Header />
-      <UserInputs handleInputChange={handleInputChange} />
-      <Result results={investmentResult} />
+      <UserInputs userInput={userInput} onChange={handleChange} />
+      <Result input={userInput} />
     </>
   );
 }

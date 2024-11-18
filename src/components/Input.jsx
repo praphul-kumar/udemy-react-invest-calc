@@ -1,8 +1,8 @@
-export default function Input({ label, type="text", handleChange, ...props }) {
+export default function Input({ type="number", label, identifier, handleChange, ...props }) {
     return(
-        <div>
+        <p>
             <label htmlFor="">{label}</label>
-            <input type={type} onChange={(e) => handleChange(e.target.value)} {...props}/>
-        </div>
+            <input type={type} onChange={(e) => handleChange(identifier, e.target.value)} {...props}/>
+        </p>
     )
 }
