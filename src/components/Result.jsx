@@ -1,4 +1,8 @@
-export default function Result() {
+import { formatter } from "../util/investment";
+
+export default function Result({ results }) {
+
+    console.log("Results: ", results);
   return (
     <>
       <div>
@@ -15,34 +19,14 @@ export default function Result() {
             </thead>
 
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>$16800</td>
-                <td>$900</td>
-                <td>$900</td>
-                <td>$15900</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>$16800</td>
-                <td>$900</td>
-                <td>$900</td>
-                <td>$15900</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>$16800</td>
-                <td>$900</td>
-                <td>$900</td>
-                <td>$15900</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>$16800</td>
-                <td>$900</td>
-                <td>$900</td>
-                <td>$15900</td>
-              </tr>
+              {results.map((result, index) => (
+                <tr key={`row-${index}`}>
+                  <td>{ result.year }</td>
+                  <td>{ formatter.format(result.interest) }</td>
+                  <td>{ formatter.format(result.valueEndOfYear) }</td>
+                  <td>{ formatter.format(result.annualInvestment) }</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
