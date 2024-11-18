@@ -9,8 +9,8 @@ export default function UserInput({ userInput, onChange }) {
           <input
             type="number"
             required
-            value={userInput.initialInvestement}
-            onChange={(e) => onChange("initialInvestement", e.target.value)}
+            value={userInput.initialInvestment}
+            onChange={(e) => onChange("initialInvestment", e.target.value)}
           />
         </p>
         <p>
